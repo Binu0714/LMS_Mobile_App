@@ -50,7 +50,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefixIcon: Icon(Icons.email), 
                     border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
                   ),
-                  validator: (value) => value!.isEmpty ? 'Please enter your email' : null,
+
+                  validator: (value) {
+                    if (value == null || value.isEmpty){
+                      return 'Please Enter Your Email';
+                    }
+
+                    final emailRegex = RegExp(
+                      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                    );
+
+                    if (!emailRegex.hasMatch(value)) {
+                      return 'Enter a valid email';
+                    }
+
+                    return null;
+                  }
                 ),
                 const SizedBox(height: 20),
 
@@ -62,7 +77,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefixIcon: Icon(Icons.lock), 
                     border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
                   ),
-                  validator: (value) => value!.length < 6 ? 'Password must be at least 6 characters' : null,
+                  
+                  validator: (value) {
+                    if (value == null || value.isEmpty){
+                      return 'Please Enter Your Password';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 30),
 
