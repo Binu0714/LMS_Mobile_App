@@ -34,10 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/logo.png', height: 220),
-                const SizedBox(height: 30),
+                Image.asset('assets/images/logo.jpg', height: 300),
+                const SizedBox(height: 10),
 
-                const Text("Welcome Back.!", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                const Text("Welcome Back.!", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
+                const Text("Sign In To Continue.!", style: TextStyle(fontSize: 16, color: Colors.grey)),
+
                 const SizedBox(height: 40), 
 
                 TextFormField(
@@ -69,15 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent, 
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: Colors.blue[900], 
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
                       }
                     },
-                    child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 16)),
+                    child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ],
