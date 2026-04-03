@@ -101,7 +101,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        ).then((_) {
+                          _emailController.clear();
+                          _passwordController.clear();
+                        });
                       }
                     },
                     child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
