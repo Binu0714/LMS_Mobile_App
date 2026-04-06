@@ -4,12 +4,12 @@ import 'course_details_screen.dart';
 
 class CourseListScreen extends StatelessWidget {
   final List<Course> courses = [
-  Course(title: "Flutter Basics", instructor: "Binu", description: "Learn UI/UX basics", icon: Icons.flutter_dash, lessons: ["Intro", "Widgets"]),
-  Course(title: "Dart Programming", instructor: "John", description: "Programming logic", icon: Icons.code, lessons: ["Variables", "Functions"]),
-  Course(title: "UI/UX Design", instructor: "Sarah", description: "Design principles", icon: Icons.design_services, lessons: ["Figma Basics", "Colors"]),
-  Course(title: "Firebase Auth", instructor: "Mike", description: "Secure your apps", icon: Icons.lock, lessons: ["Login", "Signup"]),
-  Course(title: "REST APIs", instructor: "Elena", description: "Connect to backend", icon: Icons.api, lessons: ["JSON", "Requests"]),
-  Course(title: "State Management", instructor: "David", description: "Provider & Riverpod", icon: Icons.layers, lessons: ["Provider", "Bloc"]),
+  Course(title: "Flutter Basics", instructor: "Binu Rajakaruna", description: "Learn UI/UX basics", icon: Icons.flutter_dash, lessons: ["Intro", "Widgets", "State Management", "Navigation", "Animations"]),
+  Course(title: "Dart Programming", instructor: "John Curran", description: "Programming logic", icon: Icons.code, lessons: ["Variables", "Functions", "OOP", "Async", "Packages"]),
+  Course(title: "UI/UX Design", instructor: "Sarah Johnson", description: "Design principles", icon: Icons.design_services, lessons: ["Figma Basics", "Colors", "Typography", "Prototyping", "User Testing"]),
+  Course(title: "Firebase Auth", instructor: "Mike Davis", description: "Secure your apps", icon: Icons.lock, lessons: ["Login", "Signup", "Password Reset", "Social Auth", "Email Verification"]),
+  Course(title: "REST APIs", instructor: "Elena Rodriguez", description: "Connect to backend", icon: Icons.api, lessons: ["JSON", "Requests", "Error Handling", "Authentication", "Pagination"]),
+  Course(title: "State Management", instructor: "David Kim", description: "Provider & Riverpod", icon: Icons.layers, lessons: ["Provider", "Bloc", "Riverpod", "GetX", "MobX"]),
 ];
 
   @override
@@ -18,8 +18,8 @@ class CourseListScreen extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text("My Courses", style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.blue[900],
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.blue[900],
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
