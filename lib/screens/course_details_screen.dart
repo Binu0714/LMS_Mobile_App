@@ -12,7 +12,7 @@ class CourseDetailsScreen extends StatelessWidget {
       appBar: AppBar(title: Text(course.title)),
       body: Column(
         children: [
-          Image.asset(course.image, height: 200, width: double.infinity, fit: BoxFit.cover),
+          Icon(course.icon, size: 100, color: Colors.blueAccent),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Text(course.description, style: const TextStyle(fontSize: 18)),
