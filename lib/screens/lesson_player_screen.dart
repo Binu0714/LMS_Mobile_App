@@ -6,18 +6,62 @@ class LessonPlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Lesson Player")),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: Colors.blue[900],
+        title: const Text("Lesson Player", style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
       body: Column(
         children: [
-          Container(height: 250, color: Colors.black, child: const Center(child: Icon(Icons.play_arrow, size: 100, color: Colors.white))),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                const Text("Introduction to Widgets", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 30),
-                SizedBox(width: double.infinity, height: 50, child: ElevatedButton(onPressed: () {}, child: const Text("Complete Lesson")))
-              ],
+          Container(
+            margin: const EdgeInsets.all(20),
+            height: 250,
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [BoxShadow(color: Colors.blue.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 8))],
+            ),
+            child: const Center(
+              child: Icon(Icons.play_circle_fill, size: 80, color: Colors.white),
+            ),
+          ),
+
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Introduction to Flutter", style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Color(0xFF0D47A1))),
+                  const SizedBox(height: 10),
+                  const Text("Lesson 01 • 15 Mins", style: TextStyle(color: Colors.grey, fontSize: 16)),
+                  const SizedBox(height: 20),
+                  const Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
+                      style: TextStyle(color: Colors.black54, fontSize: 16, height: 1.5)),
+                  
+                  const Spacer(), 
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF0D47A1),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      ),
+                      onPressed: () {},
+                      child: const Text("MARK AS COMPLETED", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
           )
         ],
