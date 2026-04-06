@@ -4,8 +4,8 @@ import 'course_details_screen.dart';
 
 class CourseListScreen extends StatelessWidget {
   final List<Course> courses = [
-    Course(title: "Flutter Basics", instructor: "Binu", description: "Learn UI/UX basics", image: "assets/images/logo.png", lessons: ["Intro", "Widgets"]),
-    Course(title: "Dart Masterclass", instructor: "John", description: "Learn logic", image: "assets/images/logo.png", lessons: ["Variables", "Functions"]),
+    Course(title: "Flutter Basics", instructor: "Binu", description: "Learn UI/UX basics", image: "assets/images/logo.jpg", lessons: ["Intro", "Widgets"]),
+    Course(title: "Dart Masterclass", instructor: "John", description: "Learn logic", image: "assets/images/logo.jpg", lessons: ["Variables", "Functions"]),
   ];
 
   @override

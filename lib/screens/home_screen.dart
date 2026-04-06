@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lms_app/screens/login_screen.dart';
 import 'course_list_screen.dart';
+import 'course_details_screen.dart';
+import 'lesson_player_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +16,19 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.blue[900],
         foregroundColor: Colors.white,
         elevation: 0,
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                (route) => false,
+              );
+            },
+            )
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -57,7 +73,7 @@ class HomeScreen extends StatelessWidget {
               "Flutter Basics",
               "Module 3: State Management",
               Icons.play_circle_fill,
-              () => print("Card Tapped"),
+              () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LessonPlayerScreen())),
             ),
             const SizedBox(height: 30),
 
@@ -65,14 +81,18 @@ class HomeScreen extends StatelessWidget {
 
             const Text("Featured Courses", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             const SizedBox(height: 15),
-            _buildClickableCard("UI/UX Design", "Beginner Guide", Icons.design_services, () {}),
-            _buildClickableCard("Dart Basics", "OOP Concepts", Icons.code, () {}),
+            _buildClickableCard("UI/UX Design", "Beginner Guide", Icons.design_services, () {
+              
+            }),
+            _buildClickableCard("Dart Basics", "OOP Concepts", Icons.code, () {
+
+            }),
 
             const SizedBox(height: 30),
             Center(
               child: TextButton(
-                onPressed: () => print("View All Courses"), 
-                child: const Text("Logout", style: TextStyle(color: Colors.redAccent)),
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CourseListScreen())),
+                child: const Text("View All Courses", style: TextStyle(color: Colors.blueAccent)),
               ),
             )
           ],
