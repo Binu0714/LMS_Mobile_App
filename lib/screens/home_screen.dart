@@ -4,6 +4,7 @@ import 'course_list_screen.dart';
 import 'course_details_screen.dart';
 import 'lesson_player_screen.dart';
 import 'assignment_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.person_outline),
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
           ),
 
