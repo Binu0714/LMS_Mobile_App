@@ -3,6 +3,7 @@ import 'package:lms_app/screens/login_screen.dart';
 import 'course_list_screen.dart';
 import 'course_details_screen.dart';
 import 'lesson_player_screen.dart';
+import 'assignment_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -94,7 +95,15 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CourseListScreen())),
                 child: const Text("View All Courses", style: TextStyle(color: Colors.blueAccent)),
               ),
+            ),
+
+            Center(
+              child: TextButton(
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AssignmentScreen())),
+                child: const Text("View All Assignments", style: TextStyle(color: Colors.blueAccent)),
+              ),
             )
+
           ],
         ),
       ),
