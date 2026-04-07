@@ -20,6 +20,13 @@ class HomeScreen extends StatelessWidget {
 
         actions: [
           IconButton(
+            icon: const Icon(Icons.person_outline),
+            onPressed: () {
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
+          ),
+
+          IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
               Navigator.pushAndRemoveUntil(
@@ -79,30 +86,32 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Courses Section
-
             const Text("Featured Courses", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             const SizedBox(height: 15),
-            _buildClickableCard("UI/UX Design", "Beginner Guide", Icons.design_services, () {
-              
-            }),
-            _buildClickableCard("Dart Basics", "OOP Concepts", Icons.code, () {
-
-            }),
-
-            const SizedBox(height: 30),
-            Center(
-              child: TextButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CourseListScreen())),
-                child: const Text("View All Courses", style: TextStyle(color: Colors.blueAccent)),
-              ),
+            
+            _buildClickableCard(
+              "View All Courses", 
+              "Explore all available courses", 
+              Icons.list, 
+              () => Navigator.push(context, MaterialPageRoute(builder: (_) => CourseListScreen())),
             ),
 
-            Center(
-              child: TextButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AssignmentScreen())),
-                child: const Text("View All Assignments", style: TextStyle(color: Colors.blueAccent)),
-              ),
-            )
+            const SizedBox(height: 30),
+
+            // Assignments Section 
+
+            const Text("My Assignments", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 15),
+            
+            _buildClickableCard(
+              "Recent Assignments", 
+              "See your pending tasks", 
+              Icons.assignment, 
+              () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssignmentScreen())),
+            ),
+            
+            const SizedBox(height: 50),
+           
 
           ],
         ),
