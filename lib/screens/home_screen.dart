@@ -19,25 +19,6 @@ class HomeScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 0,
 
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
-            },
-          ),
-
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-                (route) => false,
-              );
-            },
-            )
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
