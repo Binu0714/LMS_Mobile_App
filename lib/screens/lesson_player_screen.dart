@@ -60,21 +60,37 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                   const Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
                       style: TextStyle(color: Colors.black54, fontSize: 16, height: 1.5)),
                   
-                  const Spacer(), 
-
-                  SizedBox(
-                    width: double.infinity,
-                    height: 60,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF0D47A1),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  const SizedBox(height: 30), 
+                  
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isCompleted = !isCompleted;
+                      });
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      width: double.infinity,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: isCompleted ? Colors.green : const Color(0xFF0D47A1),
+                        borderRadius: BorderRadius.circular(isCompleted ? 30 : 20),
                       ),
-                      onPressed: toggleCompletion,
-                      child: Text(isCompleted ? "Completed" : "Mark as Completed", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(isCompleted ? Icons.check_circle : Icons.check_circle_outline,color : Colors.white),
+
+                            const SizedBox(width: 10),
+                            Text(isCompleted ? "Completed" : "Mark as Completed", style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                            
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
+                  )
                 ],
               ),
             ),
