@@ -17,7 +17,6 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // 1. Profile Icon (Top Center)
             const Center(
               child: CircleAvatar(
                 radius: 60,
