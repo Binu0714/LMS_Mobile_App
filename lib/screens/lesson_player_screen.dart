@@ -12,6 +12,12 @@ class LessonPlayerScreen extends StatefulWidget {
 class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
   bool isCompleted = false;
 
+  void toggleCompletion() {
+    setState(() {
+      isCompleted = !isCompleted;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +70,8 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                         backgroundColor: const Color(0xFF0D47A1),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                       ),
-                      onPressed: () {},
-                      child: const Text("MARK AS COMPLETED", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                      onPressed: toggleCompletion,
+                      child: Text(isCompleted ? "Completed" : "Mark as Completed", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   const SizedBox(height: 20),
