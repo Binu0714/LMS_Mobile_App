@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class LessonPlayerScreen extends StatelessWidget {
-  const LessonPlayerScreen({super.key});
+class LessonPlayerScreen extends StatefulWidget {
+  final String lessonTitle;
+
+  const LessonPlayerScreen({super.key, required this.lessonTitle});
+
+  @override
+  State<LessonPlayerScreen> createState() => _LessonPlayerScreenState();
+}
+
+class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
+  bool isCompleted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class LessonPlayerScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Introduction to Flutter", style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Color(0xFF0D47A1))),
+                  Text(widget.lessonTitle, style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Color(0xFF0D47A1))),
                   const SizedBox(height: 10),
                   const Text("Lesson 01 • 15 Mins", style: TextStyle(color: Colors.grey, fontSize: 16)),
                   const SizedBox(height: 20),

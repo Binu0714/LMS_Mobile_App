@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
               "Flutter Basics",
               "Module 3: State Management",
               Icons.play_circle_fill,
-              () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LessonPlayerScreen())),
+              () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LessonPlayerScreen(lessonTitle: "Introduction to Flutter"))),
             ),
             const SizedBox(height: 30),
 

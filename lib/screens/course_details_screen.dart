@@ -47,14 +47,26 @@ class CourseDetailsScreen extends StatelessWidget {
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               itemCount: course.lessons.length,
-              itemBuilder: (context, index) => Card(
+              itemBuilder: (context, index) {
+
+              final String currentLesson = course.lessons[index];
+
+              return Card(
                 child: ListTile(
                   leading: CircleAvatar(child: Text("${index + 1}")),
-                  title: Text(course.lessons[index]),
+                  title: Text(currentLesson), 
                   trailing: const Icon(Icons.play_circle_fill, color: Colors.blueAccent),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LessonPlayerScreen())),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => LessonPlayerScreen(
+                        lessonTitle: currentLesson, 
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              );
+            },
             ),
           ),
         ],
