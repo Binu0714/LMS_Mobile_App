@@ -52,7 +52,7 @@ lib/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/lms_app.git
+   git clone https://github.com/Binu0714/LMS_Mobile_App.git
    ```
 2. **Install dependencies:**
    ```bash
