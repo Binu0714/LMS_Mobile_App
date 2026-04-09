@@ -5,67 +5,60 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryBlue = Colors.blue[900]!;
+    double w = MediaQuery.of(context).size.width;
 
+    final Color primaryBlue = Colors.blue[900]!;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("My Profile",style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("My Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: w * 0.05)),
         backgroundColor: Colors.transparent,
         foregroundColor: primaryBlue,
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(w * 0.05),
           child: Column(
             children: [
               Center(
                 child: CircleAvatar(
-                  radius: 60,
+                  radius: w * 0.15,
                   backgroundColor: primaryBlue, 
-                  child: const Icon(Icons.person, size: 70, color: Colors.white),
+                  child: Icon(Icons.person, size: w * 0.18, color: Colors.white),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: w * 0.04),
 
-              Text("Binu Rajakaruna",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: primaryBlue)),
-              const Text("binu@example.com",style: TextStyle(color: Colors.blueAccent, fontSize: 16)),
-              
-              const SizedBox(height: 20),
+              Text("Binu Rajakaruna", style: TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold, color: primaryBlue)),
+              Text("binu@example.com", style: TextStyle(color: Colors.blueAccent, fontSize: w * 0.04)),
+              SizedBox(height: w * 0.05),
 
-              _buildMenuCard(Icons.person_outline, "Account","Manage your personal information", Colors.blue),
-              _buildMenuCard(Icons.analytics_outlined, "Activity", "View your activity history", Colors.orange),
-              _buildMenuCard(Icons.settings_outlined, "Settings", "Customize your preferences", Colors.teal),
-              _buildMenuCard(Icons.security_outlined, "Security", "Manage your security settings", Colors.redAccent),
-
-              const SizedBox(height: 30),
+              _buildMenuCard(w, Icons.person_outline, "Account", "Manage your personal information", Colors.blue),
+              _buildMenuCard(w, Icons.analytics_outlined, "Activity", "View your activity history", Colors.orange),
+              _buildMenuCard(w, Icons.settings_outlined, "Settings", "Customize your preferences", Colors.teal),
+              _buildMenuCard(w, Icons.security_outlined, "Security", "Manage your security settings", Colors.redAccent),
+              SizedBox(height: w * 0.08),
 
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: w * 0.13,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryBlue,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  ),
+                  style: ElevatedButton.styleFrom(backgroundColor: primaryBlue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(w * 0.04))),
                   onPressed: () {},
-                  child: const Text("Edit Profile",style: TextStyle(color: Colors.white, fontSize: 16)),
+                  child: Text("Edit Profile", style: TextStyle(color: Colors.white, fontSize: w * 0.04)),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: w * 0.03),
               
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: w * 0.13,
                 child: OutlinedButton.icon(
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Colors.redAccent),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  ),
+                  style: OutlinedButton.styleFrom(side: const BorderSide(color: Colors.redAccent), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(w * 0.04))),
                   onPressed: () {},
-                  icon: const Icon(Icons.logout, color: Colors.redAccent),
-                  label: const Text("Logout",style: TextStyle(color: Colors.redAccent, fontSize: 16, fontWeight: FontWeight.bold)),
+                  icon: Icon(Icons.logout, color: Colors.redAccent, size: w * 0.05),
+                  label: Text("Logout", style: TextStyle(color: Colors.redAccent, fontSize: w * 0.04, fontWeight: FontWeight.bold)),
                 ),
               ),
             ],
@@ -75,32 +68,21 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuCard(IconData icon, String title, String subtitle, Color iconColor) {
+  Widget _buildMenuCard(double w, IconData icon, String title, String subtitle, Color iconColor) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.only(bottom: w * 0.03),
       elevation: 0.5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(w * 0.04)),
       child: ListTile(
         leading: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Icon(icon, color: iconColor),
+          padding: EdgeInsets.all(w * 0.02),
+          decoration: BoxDecoration(color: iconColor.withOpacity(0.1), borderRadius: BorderRadius.circular(w * 0.02)),
+          child: Icon(icon, color: iconColor, size: w * 0.06),
         ),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: TextStyle(color: Colors.grey[600], fontSize: 13),
-        ),
-        trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-        onTap: () {
-         
-        },
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.w600, fontSize: w * 0.04)),
+        subtitle: Text(subtitle, style: TextStyle(color: Colors.grey[600], fontSize: w * 0.032)),
+        trailing: Icon(Icons.chevron_right, color: Colors.grey, size: w * 0.05),
+        onTap: () {},
       ),
     );
   }
