@@ -15,46 +15,68 @@ class AssignmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.grey[100], 
       appBar: AppBar(
-        title: const Text("My Assignments", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(
+          "My Assignments", 
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenWidth * 0.05) 
+        ),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.blue[900],
+        elevation: 0,
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.all(15),
+        padding: EdgeInsets.all(screenWidth * 0.04),
         itemCount: assignments.length,
-        physics: const ClampingScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
 
           bool isSubmitted = assignments[index]["status"] == "Submitted";
 
           return Card(
             elevation: 3,
-            margin: const EdgeInsets.only(bottom: 15),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            margin: EdgeInsets.only(bottom: screenWidth * 0.04), 
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(screenWidth * 0.04)
+            ),
             child: ListTile(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+             
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.04, 
+                vertical: screenWidth * 0.015
+              ),
               
               leading: Container(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(screenWidth * 0.025),
                 decoration: BoxDecoration(
                   color: isSubmitted ? Colors.blueAccent[50] : Colors.blueAccent[50],
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.025), 
                 ),
                 child: Icon(
                   isSubmitted ? Icons.check_circle : Icons.pending_actions,
                   color: isSubmitted ? Colors.blueAccent : Colors.blueAccent,
+                  size: screenWidth * 0.06, 
                 ),
               ),
               title: Text(
                 assignments[index]["title"]!, 
-                style: const TextStyle(fontWeight: FontWeight.bold)
+                style: TextStyle(
+                  fontWeight: FontWeight.bold, 
+                  fontSize: screenWidth * 0.04 
+                )
               ),
-              subtitle: Text(assignments[index]["desc"]!),
+              subtitle: Text(
+                assignments[index]["desc"]!,
+                style: TextStyle(fontSize: screenWidth * 0.035) 
+              ),
               trailing: Chip(
-                label: Text(assignments[index]["status"]!,style: TextStyle(color: Colors.white),),
+                label: Text(
+                  assignments[index]["status"]!,
+                  style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.03), 
+                ),
                 backgroundColor: isSubmitted ? Colors.green[400] : Colors.red[400],
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               ),
