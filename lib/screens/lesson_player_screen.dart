@@ -20,6 +20,9 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,10 +35,11 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
         children: [
           Container(
             margin: const EdgeInsets.all(20),
-            height: 250,
+            height: screenHeight * 0.3,
+            width: screenWidth,
             decoration: BoxDecoration(
               color: Colors.black87,
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(screenWidth * 0.05),
               boxShadow: [BoxShadow(color: Colors.blue.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 8))],
             ),
             child: const Center(
