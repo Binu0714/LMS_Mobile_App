@@ -1,123 +1,94 @@
 import 'package:flutter/material.dart';
-import 'package:lms_app/screens/login_screen.dart';
 import 'course_list_screen.dart';
-import 'course_details_screen.dart';
 import 'lesson_player_screen.dart';
 import 'assignment_screen.dart';
-import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Dashboard", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("Dashboard", style: TextStyle(fontWeight: FontWeight.bold, fontSize: w * 0.05)),
         backgroundColor: Colors.blue[900],
         foregroundColor: Colors.white,
         elevation: 0,
-
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(w * 0.05),
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
-            const Text("Hello, Student!", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
-            const Text("Let's continue your learning journey", style: TextStyle(fontSize: 16, color: Colors.grey)),
-            const SizedBox(height: 30),
-
-            // Progress Card
-
+            Text("Hello, Student!", style: TextStyle(fontSize: w * 0.07, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
+            Text("Let's continue your learning journey", style: TextStyle(fontSize: w * 0.04, color: Colors.grey)),
+            SizedBox(height: w * 0.07),
             Container(
-              padding: const EdgeInsets.all(25),
+              padding: EdgeInsets.all(w * 0.06),
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [Colors.blue[900]!, Colors.blueAccent]),
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(w * 0.06),
               ),
-
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.emoji_events, size: 50, color: Colors.amber),
-                  SizedBox(width: 20),
+                  Icon(Icons.emoji_events, size: w * 0.12, color: Colors.amber),
+                  SizedBox(width: w * 0.05),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Course Progress", style: TextStyle(color: Colors.white, fontSize: 16)),
-                      Text("60% Completed", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
+                      Text("Course Progress", style: TextStyle(color: Colors.white, fontSize: w * 0.04)),
+                      Text("60% Completed", style: TextStyle(color: Colors.white, fontSize: w * 0.055, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: w * 0.07),
 
-            // Continue Learning Section
+            Text("Continue Learning", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
+            SizedBox(height: w * 0.03),
 
-            const Text("Continue Learning", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 15),
-            _buildClickableCard(
-              "Flutter Basics",
-              "Module 3: State Management",
-              Icons.play_circle_fill,
-              () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LessonPlayerScreen(lessonTitle: "Introduction to Flutter"))),
-            ),
-            const SizedBox(height: 30),
+            _buildCard(context, w, "Flutter Basics", "Module 3: State Management", Icons.play_circle_fill, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LessonPlayerScreen(lessonTitle: "Introduction to Flutter")))),
+            SizedBox(height: w * 0.07),
 
-            // Courses Section
-            const Text("Featured Courses", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 15),
-            
-            _buildClickableCard(
-              "View All Courses", 
-              "Explore all available courses", 
-              Icons.list, 
-              () => Navigator.push(context, MaterialPageRoute(builder: (_) => CourseListScreen())),
-            ),
+            Text("Featured Courses", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
+            SizedBox(height: w * 0.03),
 
-            const SizedBox(height: 30),
+            _buildCard(context, w, "View All Courses", "Explore all available courses", Icons.list, () => Navigator.push(context, MaterialPageRoute(builder: (_) => CourseListScreen()))),
+            SizedBox(height: w * 0.07),
 
-            // Assignments Section 
+            Text("My Assignments", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
+            SizedBox(height: w * 0.03),
 
-            const Text("My Assignments", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 15),
-            
-            _buildClickableCard(
-              "Recent Assignments", 
-              "See your pending tasks", 
-              Icons.assignment, 
-              () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssignmentScreen())),
-            ),
-            
-            const SizedBox(height: 50),
-           
-
+            _buildCard(context, w, "Recent Assignments", "See your pending tasks", Icons.assignment, () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssignmentScreen()))),
+            SizedBox(height: w * 0.1),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildClickableCard(String title, String subtitle, IconData icon, VoidCallback onTap) {
+  Widget _buildCard(BuildContext context, double w, String title, String sub, IconData icon, VoidCallback onTap) {
     return Card(
       elevation: 2,
-      margin: const EdgeInsets.only(bottom: 15),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: InkWell( 
+      margin: EdgeInsets.only(bottom: w * 0.03),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(w * 0.04)),
+      child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(w * 0.04),
         child: ListTile(
           leading: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(color: Colors.blue[50], borderRadius: BorderRadius.circular(10)),
-            child: Icon(icon, color: Colors.blueAccent),
+            padding: EdgeInsets.all(w * 0.02),
+            decoration: BoxDecoration(color: Colors.blue[50], borderRadius: BorderRadius.circular(w * 0.02)),
+            child: Icon(icon, color: Colors.blueAccent, size: w * 0.06),
           ),
-          title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-          subtitle: Text(subtitle),
-          trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+          title: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: w * 0.04)),
+          subtitle: Text(sub, style: TextStyle(fontSize: w * 0.035)),
+          trailing: Icon(Icons.arrow_forward_ios, size: w * 0.04),
         ),
       ),
     );
