@@ -23,23 +23,26 @@ class _MainScreenState extends State<MainScreen>{
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blue[900],
         unselectedItemColor: Colors.grey,
-
+        selectedFontSize: w * 0.03,
+        unselectedFontSize: w * 0.03,
+        iconSize: w * 0.06,
         onTap: (index) => setState(() => _currentIndex = index), 
-
+        
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.book), label: "Courses"),
           BottomNavigationBarItem(icon: Icon(Icons.assignment), label: "Assignments"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
-
       ),
     );
   }
