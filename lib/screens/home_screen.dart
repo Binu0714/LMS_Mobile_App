@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
             Text("Hello, Student!", style: TextStyle(fontSize: w * 0.07, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
             Text("Let's continue your learning journey", style: TextStyle(fontSize: w * 0.04, color: Colors.grey)),
             SizedBox(height: w * 0.07),
+
             Container(
               padding: EdgeInsets.all(w * 0.06),
               decoration: BoxDecoration(
@@ -47,28 +48,68 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: w * 0.04),
+
+            Container(
+              padding: EdgeInsets.symmetric(vertical: w * 0.05),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(w * 0.04),
+                border: Border.all(color: Colors.grey[300]!, width: 0.5), 
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 15, 
+                    offset: const Offset(0, 5), 
+                  )
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildStatItem(w, "12", "Courses", Colors.blue),
+                  _buildVerticalDivider(w), 
+                  _buildStatItem(w, "05", "Tasks", Colors.orange),
+                  _buildVerticalDivider(w),
+                  _buildStatItem(w, "08", "Lessons", Colors.green),
+                ],
+              ),
+            ),
             SizedBox(height: w * 0.07),
 
             Text("Continue Learning", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
             SizedBox(height: w * 0.03),
 
             _buildCard(context, w, "Flutter Basics", "Module 3: State Management", Icons.play_circle_fill, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LessonPlayerScreen(lessonTitle: "Introduction to Flutter")))),
-            SizedBox(height: w * 0.07),
+            SizedBox(height: w * 0.05),
 
             Text("Featured Courses", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
             SizedBox(height: w * 0.03),
 
+            _buildCard(context, w, "Dart Programming", "Programming logic", Icons.code, () => Navigator.push(context, MaterialPageRoute(builder: (_) => CourseListScreen()))),
             _buildCard(context, w, "View All Courses", "Explore all available courses", Icons.list, () => Navigator.push(context, MaterialPageRoute(builder: (_) => CourseListScreen()))),
-            SizedBox(height: w * 0.07),
+            SizedBox(height: w * 0.05),
 
-            Text("My Assignments", style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold)),
-            SizedBox(height: w * 0.03),
-
-            _buildCard(context, w, "Recent Assignments", "See your pending tasks", Icons.assignment, () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssignmentScreen()))),
-            SizedBox(height: w * 0.1),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildStatItem(double w, String count, String label, Color color) {
+    return Column(
+      children: [
+        Text(count, style: TextStyle(fontSize: w * 0.055, fontWeight: FontWeight.bold, color: color)),
+        Text(label, style: TextStyle(fontSize: w * 0.032, color: Colors.grey[600], fontWeight: FontWeight.w500)),
+      ],
+    );
+  }
+
+  Widget _buildVerticalDivider(double w) {
+    return Container(
+      height: w * 0.08, 
+      width: 1.2, 
+      color: Colors.grey[400], 
     );
   }
 
